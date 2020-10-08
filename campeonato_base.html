@@ -2,7 +2,7 @@
 
 <head>
 
-    <title>Exercícios</title>
+    <title>Exercicios</title>
 
     <style>
         body {
@@ -60,6 +60,58 @@
             golsproprio:50,
             golscontra:33
         }];
+
+        //Lista somente os times cujas vitórias seja maior ou igual que 20
+        let vitorias20 = times.filter(time =>{
+            return time.vitorias >= 20;
+        })
+        console.log(vitorias20);
+
+        //Traz somente os nomes dos times
+        let nomeTimes = times.map(time => time.nome);
+        console.log(nomeTimes);
+
+        let novoTime = {
+
+            nome: "Wolves",
+            vitorias:    12,
+            empates:      8,
+            derrotas:    10,
+            golsproprio: 42,
+            golscontra:  30 
+
+        }
+        times.push(novoTime)
+        console.log(times);
+
+        // Mostra o nome e a quantidade de jogos(vitorias, empates e derrotas), quantidade de vitorias, empates e derrotas de um time
+        let dadosTimes = times.map(time =>{
+
+            return {
+                nome : time.nome,
+                quantidadeJogos : time.vitorias + time.derrotas + time.empates,
+                vitorias : time.vitorias,
+                derrotas : time.derrotas,
+                empates : time.empates,
+                golscontra : time.golscontra,
+                golsproprio : time.golsproprio,
+                saldogols : (time.golsproprio - time.golscontra)
+            }
+        })
+        console.log(dadosTimes);
+
+        // 5. Informe a quantidade de jogos do campeonato;
+        let jogosCampeonato = dadosTimes.reduce((jogos, time) =>{
+
+            return jogos + time.quantidadeJogos;
+
+        }, 0)
+
+        console.log(jogosCampeonato);
+
+        
+
+
     </script>
 
 </body>
